@@ -53,7 +53,14 @@
     <UnityVersion>2020.3.27f1c1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Spriter2UnityDX\Runtime\TextureController.cs" />
+    <Compile Include="Assets\Spriter2UnityDX\Runtime\SortingOrderUpdater.cs" />
+    <Compile Include="Assets\Spriter2UnityDX\Runtime\EntityRenderer.cs" />
     <Compile Include="Assets\Script\Player.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Player\TXT\readme.txt" />
+    <None Include="Assets\Player\TXT\license.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
