@@ -54,6 +54,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\Player.cs" />
+    <Compile Include="Assets\Script\InventorySystem\ItemDefinition.cs" />
+    <Compile Include="Assets\Script\InventorySystem\ItemStack.cs" />
+    <Compile Include="Assets\Script\InventorySystem\GameItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

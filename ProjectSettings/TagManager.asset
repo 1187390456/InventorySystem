@@ -13,7 +13,7 @@ TagManager:
   - UI
   - Map
   - Player
-  - 
+  - GameItem
   - 
   - 
   - 
@@ -40,6 +40,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: GameItem
+    uniqueID: 2930615921
     locked: 0
   - name: Player
     uniqueID: 4094114679
