@@ -16,6 +16,7 @@ namespace InventorySystem
             SetUpGameItem();
         }
 
+        // 自动化
         private void SetUpGameItem()
         {
             if (_itemStack == null) return;
@@ -24,6 +25,12 @@ namespace InventorySystem
             var name = _itemStack.ItemDefinition.ItemName;
             var number = _itemStack.CanStack ? Amount.ToString() : "not allow stack";
             gameObject.name = $"{name}({number})";
+        }
+
+        // 被拾取
+        public void Pick()
+        {
+            Destroy(gameObject);
         }
     }
 }
