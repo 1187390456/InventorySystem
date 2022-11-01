@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rb;
     private Animator _at;
 
-    private int faceDirection;
+    private int faceDirection = 1;
 
     private float _inputX;
     private float _inputY;
@@ -18,13 +18,9 @@ public class Player : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _at = GetComponent<Animator>();
-        faceDirection = 1;
     }
 
-    private bool IsMove()
-    {
-        return _inputX != 0 || _inputY != 0;
-    }
+    private bool IsMove() => _inputX != 0 || _inputY != 0;
 
     private void Update()
     {
@@ -34,14 +30,18 @@ public class Player : MonoBehaviour
 
         if (faceDirection == 1 && _inputX < 0)
         {
-            faceDirection *= -1;
-            transform.localScale = new Vector3(-0.3f, 0.3f, 0.3f);
+            Turn();
         }
         if (faceDirection == -1 && _inputX > 0)
         {
-            faceDirection *= -1;
-            transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+            Turn();
         }
+    }
+
+    private void Turn()
+    {
+        faceDirection *= -1;
+        transform.Rotate(0.0f, 180.0f, 0.0f);
     }
 
     private void FixedUpdate()
