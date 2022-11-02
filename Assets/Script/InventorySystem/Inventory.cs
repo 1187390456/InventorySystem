@@ -10,6 +10,8 @@ namespace InventorySystem
         [SerializeField] [Header("库存大小")] private int _size;
         [SerializeField] [Header("插槽列表")] private List<InventorySlot> _slots = new List<InventorySlot>();
 
+        public int Size => _size;
+
         private void OnValidate()
         {
             SetupSlotSize();

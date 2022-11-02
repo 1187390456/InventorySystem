@@ -61,6 +61,8 @@
     <Compile Include="Assets\Script\InventorySystem\Inventory.cs" />
     <Compile Include="Assets\Script\InventorySystem\InventorySlot.cs" />
     <Compile Include="Assets\Script\InventorySystem\InventoryException.cs" />
+    <Compile Include="Assets\Script\InventorySystem\UI\UIInventory.cs" />
+    <Compile Include="Assets\Script\InventorySystem\UI\UIInventorySlot.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
