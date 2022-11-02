@@ -14,6 +14,7 @@ namespace InventorySystem
         public ItemDefinition ItemDefinition => _itemDefinition;
         public bool CanStack => _itemDefinition && _itemDefinition.CanStack;
 
+        // 数量
         public int Amount
         {
             get => _amount;

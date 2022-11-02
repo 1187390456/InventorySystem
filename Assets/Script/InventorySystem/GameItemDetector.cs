@@ -1,13 +1,22 @@
-﻿using InventorySystem;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameItemDetector : MonoBehaviour
+namespace InventorySystem
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class GameItemDetector : MonoBehaviour
     {
-        if (!collision.TryGetComponent<GameItem>(out var gameItem)) return;
-        gameItem.Pick();
+        private Inventory _inventory;
+
+        private void Awake()
+        {
+            _inventory = transform.parent.GetComponentInChildren<Inventory>();
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (!collision.TryGetComponent<GameItem>(out var gameItem) || !_inventory.CanAcceptItemStack(gameItem.ItemStack)) return;
+            _inventory.AddItemStack(gameItem.Pick());
+        }
     }
 }

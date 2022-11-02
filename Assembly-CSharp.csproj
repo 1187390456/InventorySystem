@@ -53,11 +53,14 @@
     <UnityVersion>2020.3.27f1c1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\Player.cs" />
-    <Compile Include="Assets\Script\InventorySystem\ItemDefinition.cs" />
-    <Compile Include="Assets\Script\InventorySystem\ItemStack.cs" />
-    <Compile Include="Assets\Script\InventorySystem\GameItem.cs" />
     <Compile Include="Assets\Script\InventorySystem\GameItemDetector.cs" />
+    <Compile Include="Assets\Script\InventorySystem\ItemStack.cs" />
+    <Compile Include="Assets\Script\Player.cs" />
+    <Compile Include="Assets\Script\InventorySystem\GameItem.cs" />
+    <Compile Include="Assets\Script\InventorySystem\ItemDefinition.cs" />
+    <Compile Include="Assets\Script\InventorySystem\Inventory.cs" />
+    <Compile Include="Assets\Script\InventorySystem\InventorySlot.cs" />
+    <Compile Include="Assets\Script\InventorySystem\InventoryException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

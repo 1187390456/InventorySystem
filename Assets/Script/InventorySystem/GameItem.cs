@@ -28,9 +28,10 @@ namespace InventorySystem
         }
 
         // 被拾取
-        public void Pick()
+        public ItemStack Pick()
         {
             Destroy(gameObject);
+            return _itemStack;
         }
     }
 }
