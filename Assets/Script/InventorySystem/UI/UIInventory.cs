@@ -11,6 +11,9 @@ namespace InventorySystem
 
         [SerializeField] [Header("UI插槽列表")] private List<UIInventorySlot> _slots;
 
+
+        public Inventory Inventory => _inventory;
+
         [ContextMenu("Init Inventory UI")]
         private void InitInventoryUI()
         {
@@ -21,6 +24,7 @@ namespace InventorySystem
                 var uiSlot = Instantiate(_uiSlotPrefabs, transform);
                 var uiScript = uiSlot.GetComponent<UIInventorySlot>();
                 _slots.Add(uiScript);
+                uiScript.RenderUISlot(i);
             }
         }
     }
