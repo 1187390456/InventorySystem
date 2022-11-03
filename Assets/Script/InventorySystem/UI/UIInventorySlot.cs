@@ -8,27 +8,30 @@ namespace InventorySystem
 {
     public class UIInventorySlot : MonoBehaviour
     {
-        private Inventory _inventory;
-        private InventorySlot _slot;
+        [SerializeField] [Header("当前库存")] private Inventory _inventory;
+        [SerializeField] [Header("当前插槽")] private InventorySlot _slot;
+        [SerializeField] [Header("当前插槽索引")] private int SlotIndex;
 
-        [SerializeField]  private Image _itemIcon;
-        [SerializeField] private Image _activeIndicator;
-        [SerializeField] private TMP_Text _amount;
+        [SerializeField] [Header("显示图标")] private Image _itemIcon;
+        [SerializeField] [Header("激活指示器")] private Image _activeIndicator;
+        [SerializeField] [Header("数量")] private TMP_Text _amount;
 
         private void Start()
         {
-            RenderUISlot(1);
+            RenderUISlot(SlotIndex); // 订阅事件
         }
-
 
         // 渲染Slot UI
         public void RenderUISlot(int index)
         {
-            _inventory = GetComponentInParent<UIInventory>().Inventory; // 获取目标库存
-            _slot = _inventory.Slots[index]; //获取库存当前索引插槽
+            if (_slot != null) _slot.StateChanged -= OnStateChange;
+            SlotIndex = index;
+            if (_inventory == null) _inventory = GetComponentInParent<UIInventory>().Inventory; // 获取目标库存
+            _slot = _inventory.Slots[SlotIndex]; //获取库存当前索引插槽
             _slot.StateChanged += OnStateChange;
             UpdateViewState(_slot.ItemStack, _slot.Active);
         }
+
         // 更新方法
         private void UpdateViewState(ItemStack itemStack, bool active)
         {
@@ -44,14 +47,13 @@ namespace InventorySystem
 
             _itemIcon.sprite = item.UiSprite;
 
-            if (canStack && itemStack.Amount>0) _amount.SetText(itemStack.Amount.ToString());
-
+            if (canStack && itemStack.Amount > 0) _amount.SetText(itemStack.Amount.ToString());
         }
+
         // 事件订阅
-        private void OnStateChange(object sender,(ItemStack itemStack, bool isActive)e)
+        private void OnStateChange(object sender, (ItemStack itemStack, bool isActive) e)
         {
             UpdateViewState(e.itemStack, e.isActive);
         }
-
     }
 }

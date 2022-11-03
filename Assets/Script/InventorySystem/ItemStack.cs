@@ -9,7 +9,7 @@ namespace InventorySystem
     public class ItemStack
     {
         [SerializeField] [Header("物体定义信息")] private ItemDefinition _itemDefinition;
-        [SerializeField] [Header("物品数量")] private int _amount=1;
+        [SerializeField] [Header("物品数量")] private int _amount = 1;
 
         public ItemDefinition ItemDefinition => _itemDefinition;
         public bool CanStack => _itemDefinition && _itemDefinition.CanStack;
@@ -24,6 +24,5 @@ namespace InventorySystem
                 _amount = CanStack ? value : 1;
             }
         }
-       
     }
 }

@@ -949,12 +949,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb1daa233963eb48b6276ded01e8b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _size: 4
+  _size: 3
   _slots:
-  - _itemStack:
-      _itemDefinition: {fileID: 0}
-      _amount: 1
-    _active: 0
   - _itemStack:
       _itemDefinition: {fileID: 0}
       _amount: 1
@@ -2021,9 +2017,6 @@ MonoBehaviour:
   _inventory: {fileID: 717670100}
   _uiSlotPrefabs: {fileID: 2347587595870286157, guid: 2c6bb07bd29b9224ea259fc12ffd71be, type: 3}
   _slots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

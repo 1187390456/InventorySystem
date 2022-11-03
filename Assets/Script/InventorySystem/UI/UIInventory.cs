@@ -8,7 +8,6 @@ namespace InventorySystem
     {
         [SerializeField] [Header("目标库存")] private Inventory _inventory;
         [SerializeField] [Header("UI插槽预制件")] private GameObject _uiSlotPrefabs;
-
         [SerializeField] [Header("UI插槽列表")] private List<UIInventorySlot> _slots;
 
 
@@ -23,8 +22,8 @@ namespace InventorySystem
             {
                 var uiSlot = Instantiate(_uiSlotPrefabs, transform);
                 var uiScript = uiSlot.GetComponent<UIInventorySlot>();
-                _slots.Add(uiScript);
                 uiScript.RenderUISlot(i);
+                _slots.Add(uiScript);
             }
         }
     }
