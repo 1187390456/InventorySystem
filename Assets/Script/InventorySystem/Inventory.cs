@@ -9,9 +9,21 @@ namespace InventorySystem
     {
         [SerializeField] [Header("库存大小")] private int _size;
         [SerializeField] [Header("插槽列表")] private List<InventorySlot> _slots = new List<InventorySlot>();
+        [SerializeField] [Header("激活插槽索引")] private int _activeSlotIndex;
 
         public int Size => _size;
         public List<InventorySlot> Slots => _slots;
+
+        public int ActiveSlotIndex
+        {
+            get => _activeSlotIndex;
+            set
+            {
+                _slots[_activeSlotIndex].Active = false;
+                _activeSlotIndex = value < 0 ? _size - 1 : value % _size;
+                _slots[_activeSlotIndex].Active = true;
+            }
+        }
 
         private void OnValidate()
         {
@@ -46,6 +58,9 @@ namespace InventorySystem
             }
             return itemStack;
         }
+
+        // 设置激活索引
+        public void SetActiveIndex(int index) => ActiveSlotIndex = index;
 
         // 判断是否库存已满
         public bool IsFull() => _slots.Count(x => x.HasItem) >= _size;
