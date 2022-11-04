@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float _moveSpeed;
+    public static Player Instance { get; private set; }
+    [SerializeField] [Header("移动速度")] private float _moveSpeed;
+    [SerializeField] [Header("物品预制件")] private GameObject _gameItemPrefab;
 
     private Rigidbody2D _rb;
     private Animator _at;
@@ -18,6 +20,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         _rb = GetComponent<Rigidbody2D>();
         _at = GetComponent<Animator>();
         _inventory = GetComponentInChildren<Inventory>();
@@ -57,12 +60,26 @@ public class Player : MonoBehaviour
         {
             _inventory.SetActiveIndex(_inventory.ActiveSlotIndex - 1);
         }
+        if (Input.GetKeyDown(KeyCode.K) && _inventory.IsCurrentSlotHasItem)
+        {
+            _inventory.RemoveItemStack(true);
+        }
     }
 
     private void Turn()
     {
         faceDirection *= -1;
         transform.Rotate(0.0f, 180.0f, 0.0f);
+    }
+
+    // 生成指定物品扔出
+    public void SpawnItem(ItemStack itemStack)
+    {
+        if (_gameItemPrefab == null) return;
+        var item = Instantiate(_gameItemPrefab, transform.position, Quaternion.identity, transform.parent);
+        var itemScript = item.GetComponent<GameItem>();
+        itemScript.ItemStack = new ItemStack(itemStack.ItemDefinition, itemStack.Amount);
+        itemScript.Throw(faceDirection);
     }
 
     private void FixedUpdate()

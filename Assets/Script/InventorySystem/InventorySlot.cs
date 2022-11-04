@@ -15,10 +15,10 @@ namespace InventorySystem
         [SerializeField] [Header("激活状态")] private bool _active;
 
         // 当前插槽是否有物品
-        public bool HasItem => _itemStack != null && _itemStack.ItemDefinition != null;
+        public bool HasItem => _itemStack?.ItemDefinition != null;
 
         // 物体定义信息
-        public ItemDefinition ItemDefinition => _itemStack.ItemDefinition;
+        public ItemDefinition ItemDefinition => _itemStack?.ItemDefinition; // 一定要判断是否有ItemStack 否则报错
 
         // 激活状态
         public bool Active
